@@ -2,7 +2,7 @@
 
 2.) awk -F'\t' '{print $1, $2, $3}' pandas.tsv | sort -k3 > sorted_pandas.txt
 
-3.) grep -Eo '[A-Za-z ]+ Zoo|[A-Za-z ]+ Reserve' pandas.tsv | sort > panda_zoos_A2Z.txt
+3.) grep -Eo '[A-Za-z ]+(Zoo|Reserve)' pandas.tsv | sort > panda_zoos_A2Z.txt
 
 4.) sed -E 's/\bmale\b/M/g; s/\bfemale\b/F/g' pandas.tsv > panda_m_f.txt
 
@@ -14,6 +14,6 @@
 
 8.) grep -i 'x' pandas.tsv > x_lines.txt
 
-9.) awk -F'\t' '{locations[$4]++} END {for (loc in locations) if (locations[loc] == 1) print loc}' pandas.tsv > unique_places.txt
+9.) awk -F'\t' '{locations[$5]++} END {for (loc in locations) if (locations[loc] == 1) print loc}' pandas.tsv > unique_places.txt
 
-10.) awk -F'\t' '$2 <= 10 {print $1, $2}' pandas.tsv | sort -k2,2n > young_pandas.txt
+10.) awk -F'\t' '$2+0 <= 10 {print $1, $2}' pandas.tsv | sort -k2,2n > young_pandas.txt
